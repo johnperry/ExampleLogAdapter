@@ -1,0 +1,19 @@
+<TemplateDefinitions>
+
+	<Components>
+	
+		<AttachedChild>
+			<parent class="org.rsna.ctp.stdstages.DicomDifferenceLogger"/>
+	
+			<child name="ExampleLogAdapter" required="yes" allowMultiples="no">
+				<attr name="cohortName" required="yes" default="Cohort">
+					<helptext>
+						The name of the cohort.
+					</helptext>
+				</attr>
+			</child>
+		</AttachedChild>
+	
+	</Components>
+
+</TemplateDefinitions>
