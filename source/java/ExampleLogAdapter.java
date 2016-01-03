@@ -33,27 +33,27 @@ public class ExampleLogAdapter implements LogAdapter {
 		//do it here. Note: the configuration element of the LogAdapter is a child
 		//of element. By convention, the name of the child element is the name of
 		//the LogAdapter class (in this case, ExampleLogAdapter). 
-		//
-		//In more complex situations, you may have to construct the cohortName by
-		//interrogating either or both of the current and cached objects.
 		String className = getClass().getName();
 		className = className.substring(className.lastIndexOf(".")+1);
 		Element child = XmlUtil.getFirstNamedChild(element, className);
 		if (child != null) {
+			//In this example, we get the cohort name from the configuration element.
 			cohortName = child.getAttribute("cohortName");
 		}
 	}
 
 	/**
 	 * Get the name of the cohort to which the current object belongs.
-	 * @param currentObject the object that has madve it down the pipeline
+	 * @param currentObject the object that has made it down the pipeline
 	 * to the calling stage.
 	 * @param cachedObject the object that was cached at the head end of the pipe.
 	 * @return the name of the cohort to which the objects belong.
 	 */
 	public String getCohortName(DicomObject currentObject, DicomObject cachedObject) {
 		//In this example, we will return the cohortName attribute value 
-		//obtained from the configuration element
+		//obtained from the configuration element. In more complex situations,
+		//you may have to construct it by interrogating either or both of the
+		//objects provided in the method arguments.
 		return cohortName;
 	}
 
@@ -92,7 +92,11 @@ public class ExampleLogAdapter implements LogAdapter {
 		logger.info("Cohort name: "+queueEntry.cohortName);
 		LinkedList<LoggedElement> list = queueEntry.list;
 		for (LoggedElement el : list) {
-			logger.info(el.getElementTag() + ": " + el.name + ": \"" + el.currentValue + "\"/\"" + el.cachedValue + "\"");
+			logger.info(el.getElementTag() + ": " 
+						+ el.name + ": "
+						+ "\"" + el.currentValue + "\""
+						+ "/"
+						+ "\"" + el.cachedValue + "\"");
 		}
 		return Status.OK;
 	}
