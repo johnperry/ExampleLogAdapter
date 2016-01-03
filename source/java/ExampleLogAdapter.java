@@ -72,7 +72,7 @@ public class ExampleLogAdapter implements LogAdapter {
 	
 	/**
 	 * Disconnect from the external logging database.
-	 * This method is called when the exporter empties the export queue
+	 * This method is called after the exporter empties the export queue
 	 * or when the pipeline tells the stage to shut down.
 	 * This method should commit the database and then disconnect.
 	 * @return Status.OK or Status.FAIL
