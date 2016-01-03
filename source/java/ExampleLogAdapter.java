@@ -34,7 +34,7 @@ public class ExampleLogAdapter implements LogAdapter {
 		//of element. By convention, the name of the child element is the name of
 		//the LogAdapter class (in this case, ExampleLogAdapter). 
 		//
-		//In more comlex situations, you may have to construct the cohortName by
+		//In more complex situations, you may have to construct the cohortName by
 		//interrogating either or both of the current and cached objects.
 		String className = getClass().getName();
 		className = className.substring(className.lastIndexOf(".")+1);
