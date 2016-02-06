@@ -90,6 +90,7 @@ public class ExampleLogAdapter implements LogAdapter {
 	 */
 	public synchronized Status export(QueueEntry queueEntry) {
 		logger.info("Cohort name: "+queueEntry.cohortName);
+		logger.info("File: "+queueEntry.file.getAbsolutePath());
 		LinkedList<LoggedElement> list = queueEntry.list;
 		for (LoggedElement el : list) {
 			logger.info(el.getElementTag() + ": " 
